@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "468780677284-4imd8ifsi5odu56728bv06nda5t4d2kp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afflicartz.afflicartz",
+            "certificate_hash": "3ce520f2a949fba0799eb35886e6a5adb6933a76"
+          }
+        },
+        {
           "client_id": "468780677284-5gb7ftihofqp3m4fo9pua7qrq3n0kpqj.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -95,11 +103,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "468780677284-oug5sjp5nd2fae4pucioqgtkp0m4t6e3.apps.googleusercontent.com",
+          "client_id": "468780677284-f7ghslha3n3a849n03829o4ep7b36v7k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.pavan",
-            "certificate_hash": "7cace24e21ec638bfd240d3a7d0ed59f578e4002"
+            "certificate_hash": "508d39faad4d310bee1dd675e25a9839bcc088e9"
           }
         },
         {

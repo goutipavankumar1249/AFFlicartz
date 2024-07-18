@@ -1,391 +1,3 @@
-//
-// import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:project/DashboardPage.dart';
-// import 'package:provider/provider.dart';
-// import 'ForgetPasswordPage.dart';
-// import 'SignupPage.dart';
-// import 'UserState.dart';
-//
-// class LoginPage extends StatelessWidget {
-//   final TextEditingController emailController = TextEditingController();
-//   final TextEditingController passwordController = TextEditingController();
-//   @override
-//   Widget build(BuildContext context) {
-//     void signInWithEmailAndPassword() async {
-//       try {
-//         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-//           email: emailController.text.trim(),
-//           password: passwordController.text,
-//         );
-//         String userId = userCredential.user!.uid;
-//
-//         // Update userId using UserState
-//         Provider.of<UserState>(context, listen: false).setUserId(userId);
-//
-//
-//         // If login is successful, navigate to the VerifyMobile page
-//         showToast('login successfully');
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (context) => DashboardPage()),
-//         );
-//       } on FirebaseAuthException catch (e) {
-//         if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-//           // Show login failed message
-//           showToast('Invalid email or password');
-//         } else {
-//           // Show other error messages
-//           showToast('An error occurred');
-//         }
-//       }catch (e) {
-//         showToast('Login failed');
-//       }
-//     }
-//
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Scaffold(
-//         body: SingleChildScrollView(
-//           child: Container(
-//             padding: const EdgeInsets.symmetric(horizontal: 40),
-//             height: MediaQuery.of(context).size.height - 50,
-//             width: double.infinity,
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//               crossAxisAlignment: CrossAxisAlignment.stretch,
-//               children: <Widget>[
-//                 Column(
-//                   children: <Widget>[
-//                     const SizedBox(height: 9.0),
-//                     Container(
-//                       height: 150,
-//                       width: 150,
-//                       child: Image.asset('assets/images/Logo.png'),
-//                     ),
-//                   ],
-//                 ),
-//                 Column(
-//                   children: <Widget>[
-//                     TextField(
-//                       controller: emailController,
-//                       decoration: InputDecoration(
-//                         hintText: "Email",
-//                         border: OutlineInputBorder(
-//                           borderRadius: BorderRadius.circular(18),
-//                           borderSide: BorderSide.none,
-//                         ),
-//                         fillColor: Colors.green.withOpacity(0.1),
-//                         filled: true,
-//                         prefixIcon: const Icon(Icons.email),
-//                       ),
-//                     ),
-//                     const SizedBox(height: 20),
-//                     TextField(
-//                       controller: passwordController,
-//                       decoration: InputDecoration(
-//                         hintText: "Password",
-//                         border: OutlineInputBorder(
-//                           borderRadius: BorderRadius.circular(18),
-//                           borderSide: BorderSide.none,
-//                         ),
-//                         fillColor: Colors.green.withOpacity(0.1),
-//                         filled: true,
-//                         prefixIcon: const Icon(Icons.password),
-//                       ),
-//                       obscureText: true,
-//                     ),
-//                   ],
-//                 ),
-//                 Container(
-//                   padding: const EdgeInsets.only(top: 3, left: 3),
-//                   child: ElevatedButton(
-//                     onPressed: signInWithEmailAndPassword,
-//                     child: const Text(
-//                       "Log In",
-//                       style: TextStyle(
-//                         fontSize: 18,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                     style: ElevatedButton.styleFrom(
-//                       shape: const StadiumBorder(),
-//                       padding: const EdgeInsets.symmetric(vertical: 1),
-//                       backgroundColor: Colors.green,
-//                     ),
-//                   ),
-//                 ),
-//                 Column(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   children: <Widget>[
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: <Widget>[
-//                         const Text("Don't have an account?"),
-//                         TextButton(
-//                           onPressed: () {
-//                             Navigator.push(
-//                               context,
-//                               MaterialPageRoute(builder: (context) => SignUpPage()),
-//                             );
-//                           },
-//                           child: const Text(
-//                             "Sign Up",
-//                             style: TextStyle(color: Colors.orange),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                     const SizedBox(height: 10),
-//                     ElevatedButton(
-//                       onPressed: () {
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
-//                         );
-//                       },
-//                       child: const Text(
-//                         "Forgot Password",
-//                         style: TextStyle(color: Colors.white),
-//                       ),
-//                       style: ElevatedButton.styleFrom(
-//                         backgroundColor: Colors.green,
-//                         shape: const StadiumBorder(),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   void showToast(String message) {
-//     Fluttertoast.showToast(
-//       msg: message,
-//       toastLength: Toast.LENGTH_SHORT,
-//       gravity: ToastGravity.BOTTOM,
-//     );
-//   }
-// }
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:provider/provider.dart';
-// import 'ForgetPasswordPage.dart';
-// import 'SignupPage.dart';
-// import 'UserState.dart';
-//
-// class LoginPage extends StatelessWidget {
-//   final TextEditingController emailController = TextEditingController();
-//   final TextEditingController passwordController = TextEditingController();
-//
-//   void showToast(String message) {
-//     Fluttertoast.showToast(
-//       msg: message,
-//       toastLength: Toast.LENGTH_SHORT,
-//       gravity: ToastGravity.BOTTOM,
-//     );
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     void signInWithEmailAndPassword() async {
-//       try {
-//         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-//           email: emailController.text.trim(),
-//           password: passwordController.text,
-//         );
-//         String userId = userCredential.user!.uid;
-//
-//         // Update userId using UserState
-//         Provider.of<UserState>(context, listen: false).setUserId(userId);
-//
-//         // If login is successful, navigate to the DashboardPage
-//         showToast('Login successful');
-//         Navigator.pushReplacementNamed(context, '/dashboard');
-//       } on FirebaseAuthException catch (e) {
-//         if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-//           showToast('Invalid email or password');
-//         } else {
-//           showToast('An error occurred');
-//         }
-//       } catch (e) {
-//         showToast('Login failed');
-//       }
-//     }
-//
-//     return Scaffold(
-//       backgroundColor: Color(0xFFDAF0CB),
-//       body: SingleChildScrollView(
-//         child: Center(
-//           child: Padding(
-//             padding: const EdgeInsets.only(left: 15, right: 15, top: 120),
-//             child: Card(
-//               color: Color(0xFFD9F1C4),
-//               shape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.circular(15),
-//               ),
-//               elevation: 8,
-//               child: Padding(
-//                 padding: const EdgeInsets.all(15),
-//                 child: Column(
-//                   mainAxisSize: MainAxisSize.min,
-//                   children: [
-//                     Image.asset('assets/images/Logo.png', height: 80),
-//                     Text(
-//                       'Welcome Back',
-//                       style: TextStyle(
-//                         fontSize: 20,
-//                         fontWeight: FontWeight.bold,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                     SizedBox(height: 5),
-//                     Text(
-//                       'Log in to your account',
-//                       style: TextStyle(
-//                         fontSize: 15,
-//                         color: Colors.green.shade900,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                     SizedBox(height: 15),
-//                     _buildTextField('Email', emailController),
-//                     SizedBox(height: 5),
-//                     _buildTextField('Password', passwordController, obscureText: true),
-//                     SizedBox(height: 20),
-//                     SizedBox(
-//                       width: double.infinity,
-//                       child: ElevatedButton(
-//                         onPressed: signInWithEmailAndPassword,
-//                         style: ElevatedButton.styleFrom(
-//                           backgroundColor: Colors.white,
-//                           shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(50),
-//                           ),
-//                         ),
-//                         child: Padding(
-//                           padding: const EdgeInsets.symmetric(vertical: 10),
-//                           child: Text(
-//                             'Log in',
-//                             style: TextStyle(
-//                               fontSize: 18,
-//                               color: Colors.green.shade900,
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(height: 10),
-//                     Text(
-//                       'or log in with',
-//                       style: TextStyle(
-//                         color: Color(0xFF82C341),
-//                       ),
-//                     ),
-//                     SizedBox(height: 4),
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         Image.asset('assets/images/google.png', height: 30),
-//                         SizedBox(width: 10),
-//                         Image.asset('assets/images/insta.png', height: 30),
-//                       ],
-//                     ),
-//                     SizedBox(height: 5),
-//                     TextButton(
-//                       onPressed: () {
-//                         Navigator.pushNamed(context, '/forgot_password');
-//                       },
-//                       child: Text(
-//                         'Forgot Password?',
-//                         style: TextStyle(
-//                           color: Colors.green,
-//                           fontWeight: FontWeight.bold,
-//                         ),
-//                       ),
-//                     ),
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         Text(
-//                           "Don't have an account?",
-//                           style: TextStyle(
-//                             color: Color(0xFF82C341),
-//                           ),
-//                         ),
-//                         TextButton(
-//                           onPressed: () {
-//                             Navigator.pushNamed(context, '/signup');
-//                           },
-//                           child: Text(
-//                             'Sign Up',
-//                             style: TextStyle(
-//                               color: Colors.green.shade900,
-//                               fontWeight: FontWeight.bold,
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildTextField(String label, TextEditingController controller, {bool obscureText = false}) {
-//     return Container(
-//       width: double.infinity,
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Text(
-//             label,
-//             style: TextStyle(
-//               color: Color(0xFF82C341),
-//               fontSize: 12,
-//             ),
-//           ),
-//           SizedBox(height: 2),
-//           TextField(
-//             controller: controller,
-//             obscureText: obscureText,
-//             decoration: InputDecoration(
-//               filled: true,
-//               fillColor: Colors.transparent,
-//               contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-//               enabledBorder: OutlineInputBorder(
-//                 borderRadius: BorderRadius.circular(50),
-//                 borderSide: BorderSide(color: Colors.white),
-//               ),
-//               focusedBorder: OutlineInputBorder(
-//                 borderRadius: BorderRadius.circular(50),
-//                 borderSide: BorderSide(color: Colors.green.shade700),
-//               ),
-//             ),
-//             style: TextStyle(color: Colors.black),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -425,21 +37,20 @@ class LoginPage extends StatelessWidget {
           MaterialPageRoute(builder: (context) => DashboardPage()),
         );
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-          // Show login failed message
-          showToast('Invalid email or password');
+        if (e.code == 'user-not-found') {
+          showToast('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          showToast('Wrong password provided for that user.');
         } else {
-          // Show other error messages
-          showToast('An error occurred');
+          showToast('Error: ${e.message}');
         }
       } catch (e) {
-        showToast('Login failed');
+        showToast('Login failed: ${e.toString()}');
       }
     }
 
     Future<void> signInWithGoogle() async {
       try {
-        print('called');
         final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
         if (googleUser != null) {
@@ -452,26 +63,18 @@ class LoginPage extends StatelessWidget {
 
           final UserCredential userCredential = await _auth.signInWithCredential(credential);
           String userId = userCredential.user!.uid;
-          print('it is the userId: ${userId}');
+
           // Update userId using UserState
           Provider.of<UserState>(context, listen: false).setUserId(userId);
           User? user = userCredential.user;
-          print('it is the user : ${user}');
 
           if (user != null) {
-            // Check if user data already exists in the database
             DatabaseReference usersRef = FirebaseDatabase.instance.ref().child('users');
-            print(usersRef);
             Query userQuery = usersRef.orderByChild('uid').equalTo(userId);
             DataSnapshot snapshot = await userQuery.get();
-            print('User snapshot: ${snapshot.value}');
+
             if (snapshot.exists) {
               // User exists, fetch existing user data
-
-              print('i am entered');
-              // Map<String, dynamic> existingUserData = (snapshot.value as Map).values.first;
-              // Provider.of<UserState>(context, listen: false).setUserData(existingUserData);
-
               Fluttertoast.showToast(msg: "Login Successfully");
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardPage()));
             } else {
@@ -499,9 +102,10 @@ class LoginPage extends StatelessWidget {
           Fluttertoast.showToast(msg: "Google Sign-in canceled");
         }
       } catch (e) {
-        Fluttertoast.showToast(msg: "Google Sign-in failed");
+        Fluttertoast.showToast(msg: "Google Sign-in failed: ${e.toString()}");
       }
     }
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

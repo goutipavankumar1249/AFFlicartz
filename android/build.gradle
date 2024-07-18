@@ -1,6 +1,6 @@
 
 allprojects {
-    ext.kotlin_version = '1.6.0' // Ensure this is the desired version
+    ext.kotlin_version = '1.8.0' // Ensure this is the desired version
     repositories {
         google()
         mavenCentral()
